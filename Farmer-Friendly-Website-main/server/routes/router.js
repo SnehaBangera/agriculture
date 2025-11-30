@@ -163,6 +163,28 @@ router.post("/addcart/:id",authenticate,async(req,res)=>{
 router.get("/cartdetails",authenticate,async(req,res)=>{
     try{
         const buyuser =await USER.findOne({_id:req.userID});
+        
+        // Consolidate duplicate items in cart
+        if (buyuser.carts && buyuser.carts.length > 0) {
+            const consolidatedCart = [];
+            buyuser.carts.forEach(item => {
+                if (!item) return;
+                const existingIndex = consolidatedCart.findIndex(c => c.id === item.id);
+                if (existingIndex !== -1) {
+                    consolidatedCart[existingIndex].quantity = (consolidatedCart[existingIndex].quantity || 1) + (item.quantity || 1);
+                } else {
+                    consolidatedCart.push({...item, quantity: item.quantity || 1});
+                }
+            });
+            
+            // Update user's cart if duplicates were found
+            if (consolidatedCart.length !== buyuser.carts.length) {
+                buyuser.carts = consolidatedCart;
+                buyuser.markModified('carts');
+                await buyuser.save();
+            }
+        }
+        
         res.status(201).json(buyuser);
 
     }catch(error){
@@ -245,4 +267,29 @@ router.put('/updatequantity/:id', async (req, res) => {
       res.status(500).json({ error: 'Internal Server Error' });
     }
   });
+
+// Update cart item quantity
+router.put('/updatecartquantity/:id', authenticate, async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { quantity } = req.body;
+
+        // Find the item in user's cart and update its quantity
+        const itemIndex = req.rootUser.carts.findIndex(item => item.id === id);
+        
+        if (itemIndex === -1) {
+            return res.status(404).json({ error: "Item not found in cart" });
+        }
+
+        req.rootUser.carts[itemIndex].quantity = quantity;
+        await req.rootUser.save();
+
+        res.status(200).json(req.rootUser);
+        console.log("Cart quantity updated successfully");
+    } catch (error) {
+        console.log('Error updating cart quantity:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
 module.exports = router

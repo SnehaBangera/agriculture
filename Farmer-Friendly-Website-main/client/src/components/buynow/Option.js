@@ -2,11 +2,11 @@ import React,{useContext, useState} from 'react'
 import { LoginContext } from '../context/ContextProvider';
 
 
-const Option = ({ deletedata, get }) => {
+const Option = ({ deletedata, get, quantity: initialQuantity, productId }) => {
   // console.log(deletedata);
 
   const { account, setAccount } = useContext(LoginContext);
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(initialQuantity || 1);
   // console.log(account);
 
   const removedata = async () => {
@@ -37,9 +37,29 @@ const Option = ({ deletedata, get }) => {
     }
   };
 
-  const handleQuantityChange = (e) => {
-    setQuantity(e.target.value);
-    // You can add API call here to update quantity on server if needed
+  const handleQuantityChange = async (e) => {
+    const newQuantity = parseInt(e.target.value);
+    setQuantity(newQuantity);
+    
+    try {
+      const res = await fetch(`/updatecartquantity/${productId}`, {
+        method: "PUT",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ quantity: newQuantity }),
+        credentials: "include",
+      });
+      
+      if (res.status === 200 || res.status === 201) {
+        const data = await res.json();
+        setAccount(data);
+        get();
+      }
+    } catch (error) {
+      console.log("Error updating quantity:", error);
+    }
   };
   
   

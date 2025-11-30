@@ -52,13 +52,17 @@ const Slide = ({ title }) => {
                 {
                     products && products.map((e) => {
                         return (
-                            <NavLink to={`/getproductsone/${e.id}`}>
+                            <NavLink to={`/getproductsone/${e.id}`} key={e.id}>
                                 <div className="products_items">
                                     <div className="product_img">
-                                        <img src={e.url} alt="product" />
+                                        <img 
+                                            src={e.url} 
+                                            alt={e.title?.shortTitle || 'product'}
+                                            onError={(evt) => { evt.target.src = 'https://images.unsplash.com/photo-1560493676-04071c5f467b?w=400&h=400&fit=crop'; }}
+                                        />
                                     </div>
                                     <p className="products_name">{e.title.shortTitle}</p>
-                                    <p className="products_offer" style={{ color: "#  007185" }}>{e.discount}</p>
+                                    <p className="products_offer" style={{ color: "#16a34a" }}>{e.discount}</p>
                                     <p className="products_explore">{e.tagline}</p>
                                 </div>
                             </NavLink>

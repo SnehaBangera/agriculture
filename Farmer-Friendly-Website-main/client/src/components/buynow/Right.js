@@ -14,12 +14,13 @@ const Right = ({item}) => {
 
     // Check if 'item' is not null or undefined and is an array
     if (item && Array.isArray(item)) {
-      item.forEach((item) => {
-        // Check if 'item' is not null or undefined and has 'price' property
-        if (item && item.price) {
-          // Check if 'item.price' is not null or undefined and has 'cost' property
-          if (typeof item.price.cost === 'number') {
-            totalPrice += item.price.cost;
+      item.forEach((cartItem) => {
+        // Check if 'cartItem' is not null or undefined and has 'price' property
+        if (cartItem && cartItem.price) {
+          // Check if 'cartItem.price' is not null or undefined and has 'cost' property
+          if (typeof cartItem.price.cost === 'number') {
+            const quantity = cartItem.quantity || 1;
+            totalPrice += cartItem.price.cost * quantity;
           }
         }
       });

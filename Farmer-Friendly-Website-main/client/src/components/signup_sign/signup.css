@@ -1,211 +1,312 @@
-section{
-    position: relative;
+.sign_container {
     width: 100%;
-    min-height: 10vh;
-    /* padding-top: 150px; */
-    background: linear-gradient(180deg, #f9fafb 0%, #ffffff 100%);
-}
-
-.sign_container{
-    width: 85%;
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 2rem 0;
+    min-height: 100vh;
     display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #bbf7d0 100%);
+    padding: 2rem 1rem;
+    margin-top: 120px;
 }
 
-.sign_header img{
-    width: 180px;
-    margin-bottom: 2rem;
-    cursor: pointer;
-}
-
-.sign_form{
+.sign_container form {
     background: #fff;
-    border: 1px solid #e5e7eb;
-    padding: 2rem 2.5rem;
-    border-radius: 16px;
     width: 100%;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    max-width: 420px;
+    padding: 2.5rem;
+    border-radius: 24px;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.8);
 }
 
-.sign_form h1{
-    font-weight: 700;
-    font-size: 28px;
-    margin: 0 0 1.5rem 0;
+.sign_container form h1 {
+    font-size: 1.75rem;
+    font-weight: 800;
     color: #111827;
+    text-align: center;
+    margin: 0 0 0.5rem 0;
+    letter-spacing: -0.5px;
 }
 
-.sign_form label{
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
+.sign_container form p {
+    text-align: center;
+    color: #6b7280;
+    font-size: 0.95rem;
+    margin: 0 0 2rem 0;
+}
+
+.sign_container form .form_input {
+    margin-bottom: 1.25rem;
+}
+
+.sign_container form .form_input label {
     display: block;
-    color: #374151;
-}
-
-.sign_form input{
-    width: 100%;
-    height: 45px;
-    padding: 0 1rem;
-    border-radius: 10px;
-    outline: none;
-    border: 2px solid #e5e7eb;
-    margin-bottom: 1rem;
-    margin-top: 0.25rem;
-    font-size: 15px;
-    transition: all 0.3s ease;
-}
-
-.sign_form input:focus{
-    border-color: #22c55e;
-    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
-}
-
-.sign_form .signin_btn{
-    margin-top: 1rem;
-    margin-bottom: 1.5rem;
-    width: 100%;
-    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
-    cursor: pointer;
-    border: none;
-    height: 48px;
-    outline: none;
-    border-radius: 10px;
-    color: #fff;
+    font-size: 0.9rem;
     font-weight: 600;
-    font-size: 16px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+    color: #374151;
+    margin-bottom: 0.5rem;
 }
 
-.sign_form .signin_btn:hover{
-    background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
-    box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
+.sign_container form .form_input input {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    font-size: 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    background: #f9fafb;
+    outline: none;
+    transition: all 0.25s ease;
+    box-sizing: border-box;
+}
+
+.sign_container form .form_input input:focus {
+    border-color: #22c55e;
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.1);
+}
+
+.sign_container form .form_input input::placeholder {
+    color: #9ca3af;
+}
+
+/* Password toggle */
+.sign_container form .form_input .password_wrapper {
+    position: relative;
+}
+
+.sign_container form .form_input .password_wrapper input {
+    padding-right: 3rem;
+}
+
+.sign_container form .form_input .password_toggle {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #6b7280;
+    padding: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sign_container form .form_input .password_toggle:hover {
+    color: #22c55e;
+}
+
+/* Submit button */
+.sign_container form button[type="submit"],
+.sign_container form .submit_btn {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+    box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+    letter-spacing: 0.3px;
+}
+
+.sign_container form button[type="submit"]:hover,
+.sign_container form .submit_btn:hover {
+    box-shadow: 0 8px 25px rgba(34, 197, 94, 0.4);
     transform: translateY(-2px);
 }
 
-.sign_form .signin_info{
+.sign_container form button[type="submit"]:active,
+.sign_container form .submit_btn:active {
+    transform: translateY(0);
+}
+
+/* Switch link */
+.sign_container form .switch_link {
+    text-align: center;
     margin-top: 1.5rem;
-    display: flex;
-    align-items: center;
-    margin-bottom: 0.5rem;
-}
-
-.sign_form .signin_info p{
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 0.95rem;
     color: #6b7280;
-    margin: 0;
 }
 
-.sign_form .signin_info a{
-    font-size: 14px;
-    letter-spacing: 0.3px;
-    margin-left: 5px;
-    color: #22c55e;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.sign_form .signin_info a:hover{
+.sign_container form .switch_link a,
+.sign_container form .switch_link span {
     color: #16a34a;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.sign_container form .switch_link a:hover,
+.sign_container form .switch_link span:hover {
+    color: #15803d;
     text-decoration: underline;
 }
 
-/* for login page */
-.create_accountinfo{
-    margin-top: 2rem;
-    width: 100%;
+/* Divider */
+.sign_container form .divider {
+    display: flex;
+    align-items: center;
+    margin: 1.5rem 0;
+    gap: 1rem;
 }
 
-.create_accountinfo p{
-    font-size: 13px;
-    text-align: center;
+.sign_container form .divider span {
+    font-size: 0.85rem;
     color: #9ca3af;
-    margin: 0 0 1rem 0;
-    font-weight: 500;
-    position: relative;
+    white-space: nowrap;
 }
 
-.create_accountinfo p::before,
-.create_accountinfo p::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    width: 40%;
+.sign_container form .divider::before,
+.sign_container form .divider::after {
+    content: "";
+    flex: 1;
     height: 1px;
     background: #e5e7eb;
 }
 
-.create_accountinfo p::before {
-    left: 0;
-}
-
-.create_accountinfo p::after {
-    right: 0;
-}
-
-.create_accountinfo button{
-    background: #fff;
-    height: 48px;
+/* Social login buttons */
+.sign_container form .social_btn {
     width: 100%;
-    border-radius: 10px;
-    border: 2px solid #e5e7eb;
-    outline: none;
-    margin: 0;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-
-.create_accountinfo button:hover{
-    border-color: #22c55e;
-    background: #f9fafb;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.create_accountinfo a{
-    text-decoration: none;
-    color: #111827;
+    padding: 0.9rem 1rem;
+    font-size: 0.95rem;
     font-weight: 600;
-    font-size: 15px;
-    letter-spacing: 0.3px;
+    color: #374151;
+    background: #fff;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.sign_container form .social_btn:hover {
+    background: #f9fafb;
+    border-color: #d1d5db;
+}
+
+.sign_container form .social_btn img {
+    width: 20px;
+    height: 20px;
+}
+
+/* Logo */
+.sign_container form .form_logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.sign_container form .form_logo .logo_icon {
+    font-size: 3rem;
+    margin-bottom: 0.25rem;
+}
+
+.sign_container form .form_logo h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #16a34a;
+    margin: 0;
+}
+
+/* Error message */
+.sign_container form .error_msg {
+    background: #fef2f2;
+    color: #dc2626;
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    border: 1px solid #fecaca;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Success message */
+.sign_container form .success_msg {
+    background: #f0fdf4;
+    color: #16a34a;
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    border: 1px solid #bbf7d0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Checkbox */
+.sign_container form .checkbox_wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.sign_container form .checkbox_wrapper input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #22c55e;
+    cursor: pointer;
+    margin-top: 2px;
+}
+
+.sign_container form .checkbox_wrapper label {
+    font-size: 0.9rem;
+    color: #6b7280;
+    line-height: 1.5;
+}
+
+.sign_container form .checkbox_wrapper label a {
+    color: #16a34a;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.sign_container form .checkbox_wrapper label a:hover {
+    text-decoration: underline;
+}
+
+/* Loading state */
+.sign_container form .loading_btn {
+    opacity: 0.7;
+    cursor: not-allowed;
+    position: relative;
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-    section {
-        padding-top: 130px;
-    }
-    
-    .sign_container {
-        width: 90%;
-        padding: 1rem 0;
-    }
-    
-    .sign_form {
-        padding: 1.5rem;
-    }
-    
-    .sign_form h1 {
-        font-size: 24px;
-    }
-}
-
 @media (max-width: 480px) {
-    section {
-        padding-top: 90px;
-    }
-    
     .sign_container {
-        width: 95%;
+        padding: 1rem;
     }
     
-    .sign_form {
-        padding: 1.5rem 1rem;
+    .sign_container form {
+        padding: 2rem 1.5rem;
+        border-radius: 20px;
+    }
+    
+    .sign_container form h1 {
+        font-size: 1.5rem;
+    }
+    
+    .sign_container form .form_logo .logo_icon {
+        font-size: 2.5rem;
+    }
+    
+    .sign_container form .form_logo h2 {
+        font-size: 1.25rem;
     }
 }

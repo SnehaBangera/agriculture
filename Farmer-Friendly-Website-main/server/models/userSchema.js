@@ -75,9 +75,25 @@ userSchema.methods.generateAuthToken=async function(){
 //add tocart data
 userSchema.methods.addcartdata=async function(cart){
     try{
-        this.carts=this.carts.concat(cart);
+        // Convert Mongoose document to plain object
+        const cartItem = cart.toObject ? cart.toObject() : cart;
+        
+        // Check if item already exists in cart
+        const existingItemIndex = this.carts.findIndex(item => item.id === cartItem.id);
+        
+        if (existingItemIndex !== -1) {
+            // Item exists, increase quantity
+            this.carts[existingItemIndex].quantity = (this.carts[existingItemIndex].quantity || 1) + 1;
+            // Mark the carts array as modified so Mongoose saves it
+            this.markModified('carts');
+        } else {
+            // Item doesn't exist, add with quantity 1
+            cartItem.quantity = 1;
+            this.carts.push(cartItem);
+        }
+        
         await this.save();
-        return this.carts
+        return this.carts;
     }catch(error){
         console.log(error);
         

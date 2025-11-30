@@ -9,8 +9,12 @@ import SignUp from './components/signup_sign/SignUp';
 import {Routes,Route} from "react-router-dom"
 import Cart from './components/cart/Cart';
 import Buynow from './components/buynow/Buynow';
+import Wishlist from './components/wishlist/Wishlist';
+import AllProducts from './components/home/AllProducts';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useState,useEffect } from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 
@@ -34,8 +38,22 @@ function App() {
         <Route path="/register" element={<SignUp/>} />
         <Route path="/getproductsone/:id" element={<Cart/>} />
         <Route path="/buynow" element={<Buynow/>} />
+        <Route path="/wishlist" element={<Wishlist/>} />
+        <Route path="/products" element={<AllProducts/>} />
       </Routes>
       <Footer />
+      <ToastContainer 
+        position="bottom-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
         </>
       ):(
         <div className='circle'>

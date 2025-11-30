@@ -42,18 +42,24 @@ const Buynow = () => {
               {cartdata.map((e, k) => {
   // Check if 'e' is not null or undefined before accessing properties
   if (e && e.title) {
+    const quantity = e.quantity || 1;
+    const itemTotal = e.price ? e.price.cost * quantity : 0;
     return (
       <div key={k} className="item_containert">
-        <img src={e.url} alt="" />
+        <img 
+          src={e.url} 
+          alt={e.title?.shortTitle || 'Product'} 
+          onError={(evt) => { evt.target.src = 'https://images.unsplash.com/photo-1560493676-04071c5f467b?w=400&h=400&fit=crop'; }}
+        />
         <div className="item_details">
           <h3>{e.title.longTitle}</h3>
           {e.title.shortTitle && <h3>{e.title.shortTitle}</h3>}
-          <h3 className='diffrentprice'>Rs 150.00</h3>
+          <h3 className='diffrentprice'>Rs {e.price && e.price.cost}.00 each</h3>
           <p className='unusuall'>Usually dispatched in 5 days</p>
           <p>Eligible for FREE Shipping</p>
-          <Option deletedata={e.id} get={getdatabuy}/>
+          <Option deletedata={e.id} get={getdatabuy} quantity={quantity} productId={e.id}/>
         </div>
-        <h3 className='item_price'>Rs {e.price && e.price.cost}</h3>
+        <h3 className='item_price'>Rs {itemTotal}.00</h3>
       </div>
     );
   } else {
