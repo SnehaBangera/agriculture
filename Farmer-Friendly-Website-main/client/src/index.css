@@ -1,0 +1,41 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Global link colors - green theme */
+a {
+  color: #16a34a;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #15803d;
+}
+
+a:visited {
+  color: #166534;
+}
+
+a:active {
+  color: #14532d;
+}
+
+/* Material-UI override for primary color */
+.MuiButton-root,
+.MuiBadge-colorPrimary {
+  color: #22c55e !important;
+}
+
+.MuiBadge-badge {
+  background-color: #22c55e !important;
+}

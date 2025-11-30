@@ -1,0 +1,21 @@
+.banner_img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.carasousel {
+    margin: 0;
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    border: 4px solid rgba(255, 255, 255, 0.8);
+}
+
+@media (max-width: 768px) {
+    .banner_img {
+        height: 250px;
+    }
+}
