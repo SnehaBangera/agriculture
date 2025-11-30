@@ -246,7 +246,7 @@ const Cart = () => {
             <div className="quantity_section">
                 <span className="qty_label">Quantity:</span>
                 <div className="qty_controls">
-                    <button onClick={decreaseQty} disabled={quantity <= 1}>−</button>
+                    <button onClick={decreaseQty} disabled={quantity <= 1}></button>
                     <span>{quantity}</span>
                     <button onClick={increaseQty} disabled={quantity >= 10}>+</button>
                 </div>
@@ -289,19 +289,19 @@ const Cart = () => {
             
             <div className="features_grid">
                 <div className="feature_tag">
-                    <span className="icon">🌿</span>
+                    <span className="icon"></span>
                     <span>100% Organic</span>
                 </div>
                 <div className="feature_tag">
-                    <span className="icon">✓</span>
+                    <span className="icon"></span>
                     <span>Quality Assured</span>
                 </div>
                 <div className="feature_tag">
-                    <span className="icon">🚚</span>
+                    <span className="icon"></span>
                     <span>Fast Shipping</span>
                 </div>
                 <div className="feature_tag">
-                    <span className="icon">💯</span>
+                    <span className="icon"></span>
                     <span>Best Price</span>
                 </div>
             </div>
