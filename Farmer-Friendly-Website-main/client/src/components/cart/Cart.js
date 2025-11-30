@@ -81,44 +81,10 @@ const Cart = () => {
             } else {
                 alert("Item added to cart successfully!");
                 setAccount(data1);
-            }
-        } catch (error) {
-            console.error("Error in addtocart:", error);
-            alert("Network error. Please try again.");
-        }
-    }
-
-    //buynowfunction
-    const buynow=async(id)=>{
-        try {
-            const checkres= await fetch(`/addcart/${id}`,{
-                method:"POST",
-                headers:{
-                    Accept:"application/json",
-                    "Content-Type":"application/json"
-                },
-                body:JSON.stringify({
-                    inddata
-                }),
-                credentials:"include"
-            });
-
-            const data1=await checkres.json();
-            console.log("Buy now response:", data1);
-
-            if(checkres.status === 401 || !data1){
-                console.log("Authentication failed");
-                alert("Please login first to buy items");
-                history("/login");
-            } else if(checkres.status !== 201) {
-                console.error("Error processing buy now:", data1);
-                alert("Error processing your request. Please try again.");
-            } else {
-                setAccount(data1);
                 history("/buynow");
             }
         } catch (error) {
-            console.error("Error in buynow:", error);
+            console.error("Error in addtocart:", error);
             alert("Network error. Please try again.");
         }
     }
@@ -131,7 +97,7 @@ const Cart = () => {
         <img src={inddata.url}  alt=""/>
         <div className="cart_btn">
         <button className="cart_btn1" onClick={()=>addtocart(inddata.id)}>Add to Cart</button>
-        <button className="cart_btn2" onClick={()=>buynow(inddata.id)}>Buy Now</button>
+        <button className="cart_btn2" onClick={()=>addtocart(inddata.id)}>Buy Now</button>
          </div>
          </div>
          <div className="right_cart">

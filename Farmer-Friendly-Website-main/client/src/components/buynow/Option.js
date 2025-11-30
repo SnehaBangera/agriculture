@@ -1,4 +1,4 @@
-import React,{useContext, useState} from 'react'
+import React,{useContext} from 'react'
 import { LoginContext } from '../context/ContextProvider';
 
 
@@ -6,7 +6,6 @@ const Option = ({ deletedata, get }) => {
   // console.log(deletedata);
 
   const { account, setAccount } = useContext(LoginContext);
-  const [quantity, setQuantity] = useState(1);
   // console.log(account);
 
   const removedata = async () => {
@@ -22,24 +21,16 @@ const Option = ({ deletedata, get }) => {
   
       console.log("Response status:", res.status);
   
-      if (res.status === 200 || res.status === 201) {
+      if (res.status === 201) {
         const data = await res.json();
-        console.log("Item deleted:", data);
-        setAccount(data);
+        console.log("User deleted:", data);
         get();
       } else {
-        console.log("Error deleting item. Server response:", await res.text());
-        alert("Failed to remove item from cart");
+        console.log("Error deleting user. Server response:", await res.text());
       }
     } catch (error) {
       console.log("Error:", error);
-      alert("Network error. Please try again.");
     }
-  };
-
-  const handleQuantityChange = (e) => {
-    setQuantity(e.target.value);
-    // You can add API call here to update quantity on server if needed
   };
   
   
@@ -51,21 +42,15 @@ const Option = ({ deletedata, get }) => {
   
   return (
     <div className="add_remove_select">
-      <select value={quantity} onChange={handleQuantityChange}>
+      <select>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
       </select>
-      <p style={{cursor:"pointer"}} onClick={removedata}>Delete</p><span>|</span>
-      <p className='forremovemedia' style={{cursor:"pointer", opacity: 0.6}}>Save or later</p><span>|</span>
-      <p className='forremovemedia' style={{cursor:"pointer", opacity: 0.6}}>See more like this</p>
+      <p style={{cursor:"pointer"}} onClick={()=>removedata(deletedata)}>Delete</p><span>|</span>
+      <p className='forremovemedia'>Save or later</p><span>|</span>
+      <p className='forremovemedia'>See more like this</p>
     </div>
 
   )

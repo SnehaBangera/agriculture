@@ -1,9 +1,7 @@
 import {React,useState,useEffect} from 'react'
-import { useNavigate } from 'react-router-dom';
 
 const Right = ({item}) => {
   const [price, setPrice] = useState(0);
-  const navigate = useNavigate();
 
   useEffect(() => {
     totalAmount();
@@ -27,25 +25,13 @@ const Right = ({item}) => {
 
     setPrice(totalPrice);
   }
-
-  const handleProceedToBuy = () => {
-    if (item && item.length > 0) {
-      alert(`Proceeding to checkout with ${item.length} items. Total: Rs ${price}.00`);
-      // You can add actual checkout logic here
-      // For now, it will show a success message
-      // navigate('/checkout'); // Uncomment when checkout page is ready
-    } else {
-      alert('Your cart is empty!');
-    }
-  };
-
   return <div className="right_buy">
     <div className="cost_right">
         <p>Your order is eligible for free delivery</p>
         <span style={{color:"#565959"}}>Select this option at checkout. Details
         </span>
         <h3>Subtotal({item.length}items):<span style={{fontWeight:700}}>Rs {price}.00</span></h3>
-        <button className="rightbuy_btn" onClick={handleProceedToBuy}>Proceed to Buy</button>
+        <button className="rightbuy_btn">Proceed to Buy</button>
     </div>
       
     </div>;
